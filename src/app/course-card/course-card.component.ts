@@ -31,6 +31,10 @@ courseEmitter = new EventEmitter<Course>();
   ngOnInit(): void {
   }
 
+  isImageVisible() {
+    return this.course && this.course.iconUrl;
+  }
+
   //this is a method for the button that fires on click
   onCourseViewed() {
 console.log('card button clicked');

@@ -1,13 +1,17 @@
-<div class="course-card">
-
+<div class="course-card" *ngIf="course">
+<!-- ngif added to top to avoid elvis operator '?' and to only display valid data if undefined data is present in source will hide any items with undefined issues also though-->
 
   <div class="course-title">
     <!-- cardindex and concat echoes out index position a period and a space -->
       {{ cardIndex + '. ' + course.description }}
   </div>
-  <img width="300" alt="Angular Logo"
+<!-- ngif will hide o show element based on availability can pass expression to it and it will coerce it into a boolean allows for else operator, \
+seen here as calling a named template noImage-->
+  <img width="300" alt="Angular Logo" *ngIf="isImageVisible(); else noImage"
        [src]="course.iconUrl">
-
+<ng-template #noImage>
+  <p>No image available</p>
+</ng-template>
   <div class="course-description">
      {{ course.longDescription }}
   </div>
