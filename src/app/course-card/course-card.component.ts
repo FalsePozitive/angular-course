@@ -18,9 +18,13 @@ export class CourseCardComponent implements OnInit {
 //imports object entirely
 course: Course;
 
+@Input()
+cardIndex: number; // type declaratio for input parameter
+
 //need to define event emitter here to emit data to top level of app, data captured via bubbling
-@Output()
-courseSelected = new EventEmitter<Course>();
+// if string is added as argument that will be used as
+@Output('courseSelected')
+courseEmitter = new EventEmitter<Course>();
 
   constructor() { }
 
@@ -31,7 +35,7 @@ courseSelected = new EventEmitter<Course>();
   onCourseViewed() {
 console.log('card button clicked');
 
-this.courseSelected.emit(this.course);
+this.courseEmitter.emit(this.course);
   }
 
 }

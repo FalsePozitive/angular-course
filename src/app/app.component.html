@@ -5,7 +5,7 @@
 
 </div>
 <!-- // below accesses data from db-data.ts via the vars in app...ts file -->
-<h1>{{ coreCourse.description }}</h1>
+<!-- <h1>{{ coreCourse.description }}</h1> -->
 <div class="courses">
 
 
@@ -13,11 +13,24 @@
  <!-- change property to course to reflect updates now that we are accessing the object-->
  <!-- $event as an argument discerns payload and passes it to method does not bubble up-->
  <!-- custom event name is sames as emitter - angular takes the emitter name if nothing else is specced.-->
- <course-card (courseSelected)="onCourseSelected($event)" [course]="coreCourse"></course-card>
+ <!-- <course-card (courseSelected)="onCourseSelected($event)" [course]="coreCourse"></course-card>
 
  <course-card (courseSelected)="onCourseSelected($event)" [course]="rxjsCourse"></course-card>
- <course-card (courseSelected)="onCourseSelected($event)" [course]="ngrxCourse"></course-card>
+ <course-card (courseSelected)="onCourseSelected($event)" [course]="ngrxCourse"></course-card> -->
 
+<!-- using ngfor structural directive used to loopo through course list * symbolises structural directive-->
+<!-- let course expression allows object to be separated via looping -->
+<!-- ;index as i allows indexing -->
+<!-- input parameter cardindex is passed value of i +1 for standard count used for adding a count to the looped cards-->
+<!-- first is var provided by ngFor can be renamed using as syntax so below when using the class parameter
+and isFirst as the value the .is-first css class will be applied only to the first item of the loop-->
+ <course-card *ngFor="let course of courses;index as i;
+ first as isFirst; last as isLast; even as isEven; odd as isOdd"
+ [class.is-first]="isFirst"
+ [class.is-last]="isLast"
+ [class.is-even]="isEven"
+ [class.is-odd]="isOdd"
+ (courseSelected)="onCourseSelected($event)" [course]="course" [cardIndex]="i + 1"></course-card>
 </div>
 
 
