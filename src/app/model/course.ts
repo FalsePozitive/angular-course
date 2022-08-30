@@ -1,5 +1,5 @@
 
-
+//type safe method object definition
 export interface Course {
     id:number;
     description:string;
