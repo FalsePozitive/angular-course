@@ -7,7 +7,7 @@
 <!-- [ngStyle]="{'text-decoration':'underline'}" ngStyle can be handed a config object and also a method -->
   <div class="course-title" [ngStyle]="cardStyles()">
     <!-- cardindex and concat echoes out index position a period and a space -->
-      {{ cardIndex + '. ' + course.description }}
+      {{ cardIndex || '' + '' + course.description }}
   </div>
 <!-- ngif will hide o show element based on availability can pass expression to it and it will coerce it into a boolean allows for else operator, \
 seen here as calling a named template noImage-->

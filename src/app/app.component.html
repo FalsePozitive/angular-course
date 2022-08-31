@@ -49,12 +49,17 @@
 <!-- first is var provided by ngFor can be renamed using as syntax so below when using the class parameter
 and isFirst as the value the .is-first css class will be applied only to the first item of the loop applied according to boolean-->
 <!-- the slice pipe can be configured for a start and end but the end number is excluded so slice: 0-2 would only show 0 and 1 from the index -->
- <course-card *ngFor="let course of courses | slice: 0:2;index as i;
+ <!-- <course-card *ngFor="let course of courses | slice: 0:9;index as i;
  first as isFirst; last as isLast"
  [class.is-first]="isFirst"
  [class.is-last]="isLast"
 
- (courseSelected)="onCourseSelected($event)" [course]="course" [cardIndex]="i + 1"></course-card>
+ (courseSelected)="onCourseSelected($event)" [course]="course" [cardIndex]="i + 1"></course-card> -->
+
+<!-- removed from loop for view child decorator example-->
+ <course-card (courseSelected)="onCourseSelected($event)" [course]="courses[0]"></course-card>
+
+ <course-card (courseSelected)="onCourseSelected($event)" [course]="courses[1]"></course-card>
 </div>
 
 
