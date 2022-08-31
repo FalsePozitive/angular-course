@@ -1,4 +1,7 @@
-<div class="course-card" *ngIf="course" [ngClass]="cardClasses()">
+<!-- ng-container can be viewed as a 'pseudo div upon which we can apply directives should the element we want to apply these to does not have a parent element/container
+  it is essentially a templat hook we can reference and apply a structural directive' -->
+<ng-container *ngIf="course">
+<div class="course-card" [ngClass]="cardClasses()">
 <!-- ngif added to top to avoid elvis operator '?' and to only display valid data if undefined data is present in source will hide any items with undefined issues also though-->
 <!-- ngClass can be handed an array a string, an expression or config object, can handle several strings at once, meant for conditional styles is better to pass it as a method in order to keep template legible-->
 <!-- [ngStyle]="{'text-decoration':'underline'}" ngStyle can be handed a config object and also a method -->
@@ -16,19 +19,29 @@ seen here as calling a named template noImage-->
   <div class="course-description">
      {{ course.longDescription }}
   </div>
-   <!-- Apply ngSwitch to parent to access object property -->
-  <div class="class-category" [ngSwitch]="course.category">
-    <!-- Apply *ngSwithCase with property to children that will switch based on prop value -->
-    <div class="category" *ngSwitchCase="'BEGINNER'">BEGINNER</div>
 
-      <div class="category" *ngSwitchCase="'INTERMEDIATE'"> INTERMEDIATE</div>
-      <div class="category" *ngSwitchCase="'ADVANCED'"> ADVANCED</div>
-      <!-- USE ngSwitchDefault to set value if prop not present or does not match previously defined props -->
-      <div class="category" *ngSwitchDefault>ALL LEVELS</div>
-    </div>
+  <ng-container [ngSwitch]="course.category">
+
+<!-- Apply ngSwitch to parent to access object property -->
+<div class="class-category">
+
+  <ng-container *ngSwitchCase="'BEGINNER'">
+      <!-- Apply *ngSwithCase with property to children that will switch based on prop value -->
+  <div class="category">BEGINNER</div>
+  </ng-container>
+
+
+    <div class="category" *ngSwitchCase="'INTERMEDIATE'"> INTERMEDIATE</div>
+    <div class="category" *ngSwitchCase="'ADVANCED'"> ADVANCED</div>
+    <!-- USE ngSwitchDefault to set value if prop not present or does not match previously defined props -->
+    <div class="category" *ngSwitchDefault>ALL LEVELS</div>
+  </div>
+  </ng-container>
+
 
   <!-- note that click event can bubble beyond component itself -->
 <button (click)="onCourseViewed()">View Course</button>
 </div>
 
 <!-- extraction allows for DRY coding -->
+</ng-container>
