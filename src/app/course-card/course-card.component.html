@@ -16,6 +16,17 @@ seen here as calling a named template noImage-->
   <div class="course-description">
      {{ course.longDescription }}
   </div>
+   <!-- Apply ngSwitch to parent to access object property -->
+  <div class="class-category" [ngSwitch]="course.category">
+    <!-- Apply *ngSwithCase with property to children that will switch based on prop value -->
+    <div class="category" *ngSwitchCase="'BEGINNER'">BEGINNER</div>
+
+      <div class="category" *ngSwitchCase="'INTERMEDIATE'"> INTERMEDIATE</div>
+      <div class="category" *ngSwitchCase="'ADVANCED'"> ADVANCED</div>
+      <!-- USE ngSwitchDefault to set value if prop not present or does not match previously defined props -->
+      <div class="category" *ngSwitchDefault>ALL LEVELS</div>
+    </div>
+
   <!-- note that click event can bubble beyond component itself -->
 <button (click)="onCourseViewed()">View Course</button>
 </div>
