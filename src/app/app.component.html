@@ -4,8 +4,32 @@
          src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png">
 
 </div>
+
+<div class="demo">
+  <div>
+    <!-- the date pipe '| date' formats the returned data appropriately can also add parameters to config the output-->
+    Start Date: {{ startDate | date: 'MMM/dd/yyyy' }}
+  </div>
+  <div>
+    {{ title | titlecase }}
+  </div>
+  <div>
+    <!-- number: '3.3-5' defines range of decimal places -->
+    {{ price | currency }}
+  </div>
+  <div>
+    Percentage: {{ rate | percent }}
+  </div>
+</div>
 <!-- // below accesses data from db-data.ts via the vars in app...ts file -->
 <!-- <h1>{{ coreCourse.description }}</h1> -->
+
+<!-- {{ courses | json }}  json pipe will load entirety of object as JSON -->
+<!-- below keyvalue pipe when run on ngFor loop  will allow access to object key and value pairs-->
+<div *ngFor=" let pair of course | keyvalue">
+  {{ pair.key + ':' + pair.value }}
+</div>
+
 <div class="courses">
 
 
@@ -24,7 +48,8 @@
 <!-- input parameter cardindex is passed value of i +1 for standard count used for adding a count to the looped cards-->
 <!-- first is var provided by ngFor can be renamed using as syntax so below when using the class parameter
 and isFirst as the value the .is-first css class will be applied only to the first item of the loop applied according to boolean-->
- <course-card *ngFor="let course of courses;index as i;
+<!-- the slice pipe can be configured for a start and end but the end number is excluded so slice: 0-2 would only show 0 and 1 from the index -->
+ <course-card *ngFor="let course of courses | slice: 0:2;index as i;
  first as isFirst; last as isLast"
  [class.is-first]="isFirst"
  [class.is-last]="isLast"
