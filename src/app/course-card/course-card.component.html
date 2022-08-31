@@ -1,6 +1,6 @@
-<div class="course-card" *ngIf="course">
+<div class="course-card" *ngIf="course" [ngClass]="cardClasses()">
 <!-- ngif added to top to avoid elvis operator '?' and to only display valid data if undefined data is present in source will hide any items with undefined issues also though-->
-
+<!-- ngClass can be handed an array a string, an expression or config object, can handle several strings at once, meant for conditional styles is better to pass it as a method in order to keep template legible-->
   <div class="course-title">
     <!-- cardindex and concat echoes out index position a period and a space -->
       {{ cardIndex + '. ' + course.description }}

@@ -2,7 +2,7 @@
 
 export const COURSES: any = [
 
-  undefined,
+
 
     {
         id: 1,

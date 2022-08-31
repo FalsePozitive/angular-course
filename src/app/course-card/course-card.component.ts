@@ -35,6 +35,20 @@ courseEmitter = new EventEmitter<Course>();
     return this.course && this.course.iconUrl;
   }
 
+
+  //better to only use this for conditional styling. below method runs on elements and configures classes on them
+  cardClasses() {
+    if (this.course.category == 'BEGINNER') {
+        return ['beginner'];
+    }
+
+    // return{
+    //   // beginner config can access object properties and apply style based on boolean
+    //   'beginner':this.course.category == 'BEGINNER',
+
+    // };
+  }
+
   //this is a method for the button that fires on click
   onCourseViewed() {
 console.log('card button clicked');
