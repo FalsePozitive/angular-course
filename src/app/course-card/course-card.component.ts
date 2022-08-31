@@ -48,6 +48,10 @@ courseEmitter = new EventEmitter<Course>();
 
     // };
   }
+//better to abstract out to mehods to make it neater ad simpler to config.
+  cardStyles() {
+    return {'text-decoration':'underline'};
+  }
 
   //this is a method for the button that fires on click
   onCourseViewed() {
