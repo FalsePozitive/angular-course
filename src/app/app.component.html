@@ -30,7 +30,7 @@
   {{ pair.key + ':' + pair.value }}
 </div>
 
-<div class="courses">
+<div class="courses" #container>
 
 
  <!-- creating custom component to loop through data and create cards -->
@@ -57,9 +57,11 @@ and isFirst as the value the .is-first css class will be applied only to the fir
  (courseSelected)="onCourseSelected($event)" [course]="course" [cardIndex]="i + 1"></course-card> -->
 
 <!-- removed from loop for view child decorator example-->
- <course-card (courseSelected)="onCourseSelected($event)" [course]="courses[0]"></course-card>
+ <course-card (courseSelected)="onCourseSelected($event)" [course]="courses[0]" #cardRef1></course-card>
 
- <course-card (courseSelected)="onCourseSelected($event)" [course]="courses[1]"></course-card>
+ <course-card (courseSelected)="onCourseSelected($event)" [course]="courses[1]" #cardRef2></course-card>
+
+
 </div>
 
 
