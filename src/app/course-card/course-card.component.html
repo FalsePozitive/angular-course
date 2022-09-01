@@ -11,7 +11,7 @@
   </div>
 <!-- ngif will hide o show element based on availability can pass expression to it and it will coerce it into a boolean allows for else operator, \
 seen here as calling a named template noImage-->
-  <img width="300" alt="Angular Logo" *ngIf="isImageVisible(); else noImage"
+  <img #courseImage width="300" alt="Angular Logo" *ngIf="isImageVisible(); else noImage"
        [src]="course.iconUrl">
 <ng-template #noImage>
   <p>No image available</p>
